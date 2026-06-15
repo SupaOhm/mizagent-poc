@@ -24,7 +24,7 @@ from db_tools import (
 )
 
 APP_NAME = "mizuhada_internal_poc"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-3.1-flash-lite"
 
 SYSTEM_INSTRUCTION = """\
 You are the Mizuhada internal assistant (POC). You help staff with org-chart

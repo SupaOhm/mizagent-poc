@@ -4,7 +4,7 @@ A **function-calling agent** over a mock SQLite database. It answers staff/org-c
 and warehouse/inventory questions by calling read-only tools — **not** a RAG system.
 
 ## Stack
-- **Google ADK** `LlmAgent` (`gemini-2.0-flash`) with 5 wired tools
+- **Google ADK** `LlmAgent` (`gemini-3.1-flash-lite`) with 5 wired tools
 - **SQLite** mock database (`mock_company.db`)
 - **Streamlit** chat UI
 
