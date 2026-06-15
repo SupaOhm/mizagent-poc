@@ -22,6 +22,10 @@ st.caption(
 # --- Session state ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "turns" not in st.session_state:
+    # One entry per user turn: {"question": str, "trace": list}. Read by the
+    # 🔍 Debug Trace page; never rendered on this chat page.
+    st.session_state.turns = []
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 if "pending" not in st.session_state:
@@ -62,6 +66,7 @@ with st.sidebar:
     st.divider()
     if st.button("🔄 New conversation", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.turns = []
         st.session_state.session_id = str(uuid.uuid4())
         st.session_state.pending = None
         st.rerun()
@@ -83,9 +88,11 @@ if user_input:
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking…"):
-            reply = agent.get_agent_response(
+            reply, trace = agent.get_agent_response(
                 user_input, st.session_state.session_id
             )
         st.markdown(reply)
 
     st.session_state.messages.append({"role": "assistant", "content": reply})
+    # Stash the tool-call trace for the debug page (not shown here).
+    st.session_state.turns.append({"question": user_input, "trace": trace})

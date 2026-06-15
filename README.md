@@ -31,6 +31,11 @@ streamlit run app.py
 > The agent reads `GOOGLE_API_KEY` from the environment. With python-dotenv it is
 > picked up from `.env`; otherwise `export GOOGLE_API_KEY=...` before running.
 
+> **Debug page (tool-call trace)** available in the sidebar page nav as
+> **🔍 Debug Trace** — useful for demos to show the function-calling pattern
+> explicitly (each turn's tool name, arguments, raw return value, and the routing
+> rule it maps to). The main chat page stays clean.
+
 ## Quick checks (no API key needed)
 ```bash
 python seed_db.py        # prints row counts
