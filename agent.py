@@ -30,6 +30,16 @@ from db_tools import (
 APP_NAME = "mizuhada_internal_poc"
 MODEL = "gemini-3.1-flash-lite"
 
+# Maps each tool to the lettered routing rule it implements in SYSTEM_INSTRUCTION.
+# Used by the debug page to show which rule fired for each call.
+TOOL_ROUTING = {
+    "search_employees": "(a) People/org lookup",
+    "get_employee_record": "(a) People/org lookup",
+    "query_products": "(b) Simple product filter",
+    "calculate_stock_coverage": "(c) Stock coverage calculation",
+    "get_low_stock_items": "(d) Low-stock / reorder check",
+}
+
 SYSTEM_INSTRUCTION = """\
 You are the Mizuhada internal assistant (POC). You help staff with org-chart
 lookups and warehouse/inventory questions across three brands (Mihihi, Bobi, Harshcolor)
@@ -80,6 +90,8 @@ def build_agent():
 _RUNNER = None
 _KNOWN_SESSIONS = set()
 _DEFAULT_USER = "streamlit_user"
+# Most recent turn's tool-call trace, keyed by session_id (for the debug page).
+_LAST_TRACE = {}
 
 
 def _get_runner():
@@ -108,29 +120,54 @@ async def _respond(session_id, user_message):
 
     message = types.Content(role="user", parts=[types.Part(text=user_message)])
     reply = ""
+    # Collect tool calls + their raw return dicts straight from the event stream
+    # (the runner already dispatches the tools — we only read what it emits).
+    pending_calls = []  # FIFO of {tool_name, arguments} awaiting their response
+    trace = []
     async for event in runner.run_async(
         user_id=_DEFAULT_USER, session_id=session_id, new_message=message
     ):
+        for call in event.get_function_calls() or []:
+            pending_calls.append(
+                {"tool_name": call.name, "arguments": dict(call.args or {})}
+            )
+        for resp in event.get_function_responses() or []:
+            entry = _match_call(pending_calls, resp.name)
+            entry["result"] = resp.response
+            entry["routing_rule"] = TOOL_ROUTING.get(resp.name, "(unmapped)")
+            trace.append(entry)
         if event.is_final_response() and event.content and event.content.parts:
             reply = "".join(p.text or "" for p in event.content.parts)
-    return reply.strip()
+    return reply.strip(), trace
+
+
+def _match_call(pending_calls, name):
+    """Pop the earliest pending call matching `name` to pair it with its response."""
+    for i, call in enumerate(pending_calls):
+        if call["tool_name"] == name:
+            return pending_calls.pop(i)
+    return {"tool_name": name, "arguments": {}}
 
 
 def get_agent_response(user_message, session_id):
-    """Run the agent for one turn and return the final text reply (string).
+    """Run the agent for one turn.
 
-    This is the entry point the Streamlit app calls. Conversation history is
-    kept in-process per session_id.
+    Returns a (reply_text, trace) tuple. `trace` is a list of one dict per tool
+    call: {tool_name, arguments, result, routing_rule}. The entry point the
+    Streamlit app calls; conversation history is kept in-process per session_id.
     """
     if not os.getenv("GOOGLE_API_KEY"):
         return (
             "GOOGLE_API_KEY is not set. Copy .env.example to .env and add your "
-            "key, then restart the app."
+            "key, then restart the app.",
+            [],
         )
     try:
-        return asyncio.run(_respond(session_id, user_message))
+        reply, trace = asyncio.run(_respond(session_id, user_message))
     except Exception as exc:  # POC: surface errors instead of crashing the UI
-        return f"Agent error: {exc}"
+        return f"Agent error: {exc}", []
+    _LAST_TRACE[session_id] = trace
+    return reply, trace
 
 
 async def _run_query(runner, user_id, session_id, text):

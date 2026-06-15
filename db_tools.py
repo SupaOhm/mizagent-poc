@@ -41,7 +41,8 @@ def search_employees(name=None, team=None):
         clauses.append("LOWER(name) LIKE LOWER(?)")
         params.append(f"%{name}%")
     if team is not None:
-        clauses.append("team = ?")
+        # Case-insensitive: match "IT"/"it" regardless of how the LLM passes it.
+        clauses.append("team = ? COLLATE NOCASE")
         params.append(team)
 
     sql = (
@@ -89,10 +90,13 @@ def query_products(brand=None, category=None, stock_status=None):
     """
     clauses, params = [], []
     if brand is not None:
-        clauses.append("brand = ?")
+        # Case-insensitive (see category note below): match "mihihi"/"Mihihi" alike.
+        clauses.append("brand = ? COLLATE NOCASE")
         params.append(brand)
     if category is not None:
-        clauses.append("category = ?")
+        # Case-insensitive: the LLM may pass "cosmetics" while seed data stores
+        # "Cosmetics". COLLATE NOCASE matches regardless of case.
+        clauses.append("category = ? COLLATE NOCASE")
         params.append(category)
     if stock_status is not None:
         if stock_status == "low":
@@ -173,7 +177,8 @@ def get_low_stock_items(brand=None):
     )
     params = []
     if brand is not None:
-        sql += " AND brand = ?"
+        # Case-insensitive brand filter (matches query_products behavior).
+        sql += " AND brand = ? COLLATE NOCASE"
         params.append(brand)
     sql += " ORDER BY shortfall DESC"
 
