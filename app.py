@@ -11,9 +11,9 @@ import streamlit as st
 
 import agent
 
-st.set_page_config(page_title="Mizuhada Internal AI Agent — POC", page_icon="🤖")
+st.set_page_config(page_title="Internal Agent - POC", page_icon="🤖")
 
-st.title("Mizuhada Internal AI Agent — POC (Project 2)")
+st.title("Internal Agent - POC")
 st.caption(
     "⚠️ Demo only — runs on a mock SQLite database with fictional data. "
     "No authentication, no real records."

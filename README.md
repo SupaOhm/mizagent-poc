@@ -1,4 +1,4 @@
-# Mizuhada Internal AI Agent — POC (Project 2)
+# Internal Agent - POC
 
 A **function-calling agent** over a mock SQLite database. It answers staff/org-chart
 and warehouse/inventory questions by calling read-only tools — **not** a RAG system.
