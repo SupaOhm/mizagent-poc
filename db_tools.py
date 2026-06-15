@@ -203,7 +203,7 @@ def _smoke_test():
     show("query_products(stock_status='bogus') [error]", query_products(stock_status="bogus"))
 
     show("calculate_stock_coverage('MH-SK-001')", calculate_stock_coverage("MH-SK-001"))
-    show("calculate_stock_coverage('MH-WE-001')  # avg=0 edge", calculate_stock_coverage("MH-WE-001"))
+    show("calculate_stock_coverage('MH-SK-005')  # avg=0 edge", calculate_stock_coverage("MH-SK-005"))
     show("calculate_stock_coverage('NOPE') [not found]", calculate_stock_coverage("NOPE"))
 
     show("get_low_stock_items()", get_low_stock_items())

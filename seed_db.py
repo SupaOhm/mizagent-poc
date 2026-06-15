@@ -49,24 +49,24 @@ EMPLOYEES = [
 
 # (sku, name, brand, category, current_stock, avg_daily_sales, reorder_point)
 PRODUCTS = [
-    # Mihihi
-    ("MH-SK-001", "Hydrating Serum", "Mihihi", "Skincare", 120, 8.0, 60),
-    ("MH-SK-002", "Gentle Facial Cleanser", "Mihihi", "Skincare", 30, 5.0, 50),   # low
-    ("MH-CO-001", "Lip Tint", "Mihihi", "Cosmetics", 200, 12.0, 80),
-    ("MH-CO-002", "Cushion Foundation", "Mihihi", "Cosmetics", 15, 9.0, 40),     # low
-    ("MH-WE-001", "Collagen Powder", "Mihihi", "Wellness", 90, 0.0, 30),    # avg_daily_sales = 0 edge case
-    # Bobi
-    ("BB-SK-001", "Hydrating Toner", "Bobi", "Skincare", 75, 6.0, 50),
-    ("BB-SK-002", "Calming Sheet Mask", "Bobi", "Skincare", 22, 4.0, 35),            # low
-    ("BB-CO-001", "Eyeshadow Palette", "Bobi", "Cosmetics", 140, 10.0, 70),
-    ("BB-CO-002", "Eyebrow Pencil", "Bobi", "Cosmetics", 18, 7.0, 45),         # low
-    ("BB-WE-001", "Vitamin C Effervescent", "Bobi", "Wellness", 60, 3.0, 40),
-    # Harshcolor
-    ("HC-SK-001", "Facial Sunscreen SPF50", "Harshcolor", "Skincare", 110, 7.0, 60),
-    ("HC-CO-001", "Liquid Eyeliner", "Harshcolor", "Cosmetics", 25, 6.0, 50),         # low
-    ("HC-CO-002", "Setting Powder", "Harshcolor", "Cosmetics", 95, 5.0, 40),
-    ("HC-WE-001", "Electrolyte Mix", "Harshcolor", "Wellness", 40, 8.0, 80),            # low
-    ("HC-WE-002", "Sleep Support Capsules", "Harshcolor", "Wellness", 130, 2.0, 30),
+    # Mihihi -> Skincare / sunscreen brand only
+    ("MH-SK-001", "Facial Sunscreen SPF50", "Mihihi", "Skincare", 110, 7.0, 60),
+    ("MH-SK-002", "Hydrating Serum", "Mihihi", "Skincare", 30, 5.0, 50),         # low
+    ("MH-SK-003", "Balancing Toner", "Mihihi", "Skincare", 75, 6.0, 50),
+    ("MH-SK-004", "Gentle Facial Cleanser", "Mihihi", "Skincare", 20, 4.0, 45),  # low
+    ("MH-SK-005", "Calming Sheet Mask", "Mihihi", "Skincare", 90, 0.0, 30),      # avg_daily_sales = 0 edge case
+    # Bobi -> Wellness / supplement brand only
+    ("BB-WL-001", "Collagen Powder", "Bobi", "Wellness", 60, 3.0, 40),
+    ("BB-WL-002", "Probiotic Capsules", "Bobi", "Wellness", 15, 5.0, 40),        # low
+    ("BB-WL-003", "Vitamin C Effervescent", "Bobi", "Wellness", 18, 7.0, 45),    # low
+    ("BB-WL-004", "Sleep Support Capsules", "Bobi", "Wellness", 130, 2.0, 30),
+    ("BB-WL-005", "Electrolyte Mix", "Bobi", "Wellness", 40, 8.0, 80),           # low
+    # Harshcolor -> Cosmetics / makeup brand only
+    ("HC-CO-001", "Matte Foundation", "Harshcolor", "Cosmetics", 140, 10.0, 70),
+    ("HC-CO-002", "Lip Tint", "Harshcolor", "Cosmetics", 25, 6.0, 50),          # low
+    ("HC-CO-003", "Eyeshadow Palette", "Harshcolor", "Cosmetics", 200, 12.0, 80),
+    ("HC-CO-004", "Volumizing Mascara", "Harshcolor", "Cosmetics", 18, 7.0, 45), # low
+    ("HC-CO-005", "Blush Compact", "Harshcolor", "Cosmetics", 95, 5.0, 40),
 ]
 
 SCHEMA = """
