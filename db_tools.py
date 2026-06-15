@@ -195,8 +195,8 @@ def _smoke_test():
     show("search_employees(team='Warehouse')", search_employees(team="Warehouse"))
     show("search_employees() [error case]", search_employees())
 
-    show("get_employee_record(4)  # Ohm", get_employee_record(4))
-    show("get_employee_record(9999) [not found]", get_employee_record(9999))
+    show("get_employee_record('E004')  # Ohm", get_employee_record("E004"))
+    show("get_employee_record('E999') [not found]", get_employee_record("E999"))
 
     show("query_products(brand='MizuMi')", query_products(brand="MizuMi"))
     show("query_products(stock_status='low')", query_products(stock_status="low"))

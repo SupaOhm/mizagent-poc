@@ -41,10 +41,10 @@ with st.sidebar:
     st.divider()
     st.subheader("Try personal-data queries")
     st.markdown(
-        "Employee IDs are integers. Examples you can use:\n"
-        "- `4` — Ohm (Dev Intern, IT/AI)\n"
-        "- `9` — Quinn (Warehouse Manager, MizuMi)\n"
-        "- `12` — Reese (Brand Lead, Bomi)"
+        "Employee IDs look like `E001`–`E023`. Examples you can use:\n"
+        "- `E004` — Ohm (Dev Intern, IT/AI)\n"
+        "- `E009` — Quinn (Warehouse Manager, MizuMi)\n"
+        "- `E012` — Reese (Brand Lead, Bomi)"
     )
 
     st.divider()

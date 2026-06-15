@@ -43,7 +43,7 @@ python db_tools.py       # smoke-tests all 5 tools, prints JSON
 - "How many days of supply does SKU MZ-SK-001 have?"
 - "What needs reordering across the whole company?"
 
-Employee IDs are integers (e.g. `4` = Ohm, `9` = Quinn, `12` = Reese).
+Employee IDs look like `E001`–`E023` (e.g. `E004` = Ohm, `E009` = Quinn, `E012` = Reese).
 
 ## About this POC
 

@@ -15,36 +15,36 @@ DB_PATH = os.path.join(os.path.dirname(__file__), "mock_company.db")
 # (employee_id, name, role, team, brand, manager_id, email, phone)
 EMPLOYEES = [
     # --- Corporate leadership (top of hierarchy, manager_id = NULL) ---
-    (1, "Alex", "CEO", "Executive", "Corporate", None, "alex@mizuhada.example", "02-000-0001"),
-    (2, "Jordan", "COO", "Executive", "Corporate", 1, "jordan@mizuhada.example", "02-000-0002"),
+    ("E001", "Alex", "CEO", "Executive", "Corporate", None, "alex@mizuhada.example", "02-000-0001"),
+    ("E002", "Jordan", "COO", "Executive", "Corporate", "E001", "jordan@mizuhada.example", "02-000-0002"),
     # --- Corporate IT/AI team (Ohm lives here) ---
-    (3, "Casey", "IT Manager", "IT/AI", "Corporate", 2, "casey@mizuhada.example", "02-000-0010"),
-    (4, "Ohm", "Dev Intern", "IT/AI", "Corporate", 3, "ohm@mizuhada.example", "02-000-0011"),
-    (5, "Morgan", "Data Analyst", "IT/AI", "Corporate", 3, "morgan@mizuhada.example", "02-000-0012"),
+    ("E003", "Casey", "IT Manager", "IT/AI", "Corporate", "E002", "casey@mizuhada.example", "02-000-0010"),
+    ("E004", "Ohm", "Dev Intern", "IT/AI", "Corporate", "E003", "ohm@mizuhada.example", "02-000-0011"),
+    ("E005", "Morgan", "Data Analyst", "IT/AI", "Corporate", "E003", "morgan@mizuhada.example", "02-000-0012"),
 
     # --- MizuMi brand ---
-    (6, "Taylor", "Brand Lead", "Management", "MizuMi", 2, "taylor@mizuhada.example", "02-100-0001"),
-    (7, "Sam", "Marketing Manager", "Marketing", "MizuMi", 6, "sam@mizuhada.example", "02-100-0002"),
-    (8, "Riley", "Marketing Exec", "Marketing", "MizuMi", 7, "riley@mizuhada.example", "02-100-0003"),
-    (9, "Quinn", "Warehouse Manager", "Warehouse", "MizuMi", 6, "quinn@mizuhada.example", "02-100-0010"),
-    (10, "Avery", "Warehouse Staff", "Warehouse", "MizuMi", 9, "avery@mizuhada.example", "02-100-0011"),
-    (11, "Drew", "Sales Manager", "Sales", "MizuMi", 6, "drew@mizuhada.example", "02-100-0020"),
+    ("E006", "Taylor", "Brand Lead", "Management", "MizuMi", "E002", "taylor@mizuhada.example", "02-100-0001"),
+    ("E007", "Sam", "Marketing Manager", "Marketing", "MizuMi", "E006", "sam@mizuhada.example", "02-100-0002"),
+    ("E008", "Riley", "Marketing Exec", "Marketing", "MizuMi", "E007", "riley@mizuhada.example", "02-100-0003"),
+    ("E009", "Quinn", "Warehouse Manager", "Warehouse", "MizuMi", "E006", "quinn@mizuhada.example", "02-100-0010"),
+    ("E010", "Avery", "Warehouse Staff", "Warehouse", "MizuMi", "E009", "avery@mizuhada.example", "02-100-0011"),
+    ("E011", "Drew", "Sales Manager", "Sales", "MizuMi", "E006", "drew@mizuhada.example", "02-100-0020"),
 
     # --- Bomi brand ---
-    (12, "Reese", "Brand Lead", "Management", "Bomi", 2, "reese@mizuhada.example", "02-200-0001"),
-    (13, "Skyler", "Marketing Manager", "Marketing", "Bomi", 12, "skyler@mizuhada.example", "02-200-0002"),
-    (14, "Parker", "Warehouse Manager", "Warehouse", "Bomi", 12, "parker@mizuhada.example", "02-200-0010"),
-    (15, "Hayden", "Warehouse Staff", "Warehouse", "Bomi", 14, "hayden@mizuhada.example", "02-200-0011"),
-    (16, "Rowan", "Sales Manager", "Sales", "Bomi", 12, "rowan@mizuhada.example", "02-200-0020"),
-    (17, "Emerson", "Sales Exec", "Sales", "Bomi", 16, "emerson@mizuhada.example", "02-200-0021"),
+    ("E012", "Reese", "Brand Lead", "Management", "Bomi", "E002", "reese@mizuhada.example", "02-200-0001"),
+    ("E013", "Skyler", "Marketing Manager", "Marketing", "Bomi", "E012", "skyler@mizuhada.example", "02-200-0002"),
+    ("E014", "Parker", "Warehouse Manager", "Warehouse", "Bomi", "E012", "parker@mizuhada.example", "02-200-0010"),
+    ("E015", "Hayden", "Warehouse Staff", "Warehouse", "Bomi", "E014", "hayden@mizuhada.example", "02-200-0011"),
+    ("E016", "Rowan", "Sales Manager", "Sales", "Bomi", "E012", "rowan@mizuhada.example", "02-200-0020"),
+    ("E017", "Emerson", "Sales Exec", "Sales", "Bomi", "E016", "emerson@mizuhada.example", "02-200-0021"),
 
     # --- GS brand ---
-    (18, "Finley", "Brand Lead", "Management", "GS", 2, "finley@mizuhada.example", "02-300-0001"),
-    (19, "Sage", "Marketing Manager", "Marketing", "GS", 18, "sage@mizuhada.example", "02-300-0002"),
-    (20, "Blake", "Warehouse Manager", "Warehouse", "GS", 18, "blake@mizuhada.example", "02-300-0010"),
-    (21, "Lane", "Warehouse Staff", "Warehouse", "GS", 20, "lane@mizuhada.example", "02-300-0011"),
-    (22, "Marlow", "Sales Manager", "Sales", "GS", 18, "marlow@mizuhada.example", "02-300-0020"),
-    (23, "Indi", "Sales Exec", "Sales", "GS", 22, "indi@mizuhada.example", "02-300-0021"),
+    ("E018", "Finley", "Brand Lead", "Management", "GS", "E002", "finley@mizuhada.example", "02-300-0001"),
+    ("E019", "Sage", "Marketing Manager", "Marketing", "GS", "E018", "sage@mizuhada.example", "02-300-0002"),
+    ("E020", "Blake", "Warehouse Manager", "Warehouse", "GS", "E018", "blake@mizuhada.example", "02-300-0010"),
+    ("E021", "Lane", "Warehouse Staff", "Warehouse", "GS", "E020", "lane@mizuhada.example", "02-300-0011"),
+    ("E022", "Marlow", "Sales Manager", "Sales", "GS", "E018", "marlow@mizuhada.example", "02-300-0020"),
+    ("E023", "Indi", "Sales Exec", "Sales", "GS", "E022", "indi@mizuhada.example", "02-300-0021"),
 ]
 
 # (sku, name, brand, category, current_stock, avg_daily_sales, reorder_point)
@@ -74,12 +74,12 @@ DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS employees;
 
 CREATE TABLE employees (
-    employee_id INTEGER PRIMARY KEY,
+    employee_id TEXT PRIMARY KEY,
     name        TEXT NOT NULL,
     role        TEXT NOT NULL,
     team        TEXT NOT NULL,
     brand       TEXT NOT NULL,
-    manager_id  INTEGER REFERENCES employees(employee_id),
+    manager_id  TEXT REFERENCES employees(employee_id),
     email       TEXT,
     phone       TEXT
 );
