@@ -15,6 +15,10 @@ The agent NEVER does arithmetic itself: every number comes from a tool result.
 import asyncio
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()  # read GOOGLE_API_KEY from .env into the environment
+
 from db_tools import (
     calculate_stock_coverage,
     get_employee_record,
