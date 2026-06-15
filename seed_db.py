@@ -15,36 +15,36 @@ DB_PATH = os.path.join(os.path.dirname(__file__), "mock_company.db")
 # (employee_id, name, role, team, brand, manager_id, email, phone)
 EMPLOYEES = [
     # --- Corporate leadership (top of hierarchy, manager_id = NULL) ---
-    ("E001", "Alex", "CEO", "Executive", "Corporate", None, "alex@mizuhada.example", "02-000-0001"),
-    ("E002", "Jordan", "COO", "Executive", "Corporate", "E001", "jordan@mizuhada.example", "02-000-0002"),
+    ("E001", "Alex", "CEO", "Executive", "Corporate", None, "alex@mizahaha.example", "02-000-0001"),
+    ("E002", "Jordan", "COO", "Executive", "Corporate", "E001", "jordan@mizahaha.example", "02-000-0002"),
     # --- Corporate IT/AI team (Ohm lives here) ---
-    ("E003", "Casey", "IT Manager", "IT/AI", "Corporate", "E002", "casey@mizuhada.example", "02-000-0010"),
-    ("E004", "Ohm", "Dev Intern", "IT/AI", "Corporate", "E003", "ohm@mizuhada.example", "02-000-0011"),
-    ("E005", "Morgan", "Data Analyst", "IT/AI", "Corporate", "E003", "morgan@mizuhada.example", "02-000-0012"),
+    ("E003", "Casey", "IT Manager", "IT/AI", "Corporate", "E002", "casey@mizahaha.example", "02-000-0010"),
+    ("E004", "Ohm", "Dev Intern", "IT/AI", "Corporate", "E003", "ohm@mizahaha.example", "02-000-0011"),
+    ("E005", "Morgan", "Data Analyst", "IT/AI", "Corporate", "E003", "morgan@mizahaha.example", "02-000-0012"),
 
     # --- Mihihi brand ---
-    ("E006", "Taylor", "Brand Lead", "Management", "Mihihi", "E002", "taylor@mizuhada.example", "02-100-0001"),
-    ("E007", "Sam", "Marketing Manager", "Marketing", "Mihihi", "E006", "sam@mizuhada.example", "02-100-0002"),
-    ("E008", "Riley", "Marketing Exec", "Marketing", "Mihihi", "E007", "riley@mizuhada.example", "02-100-0003"),
-    ("E009", "Quinn", "Warehouse Manager", "Warehouse", "Mihihi", "E006", "quinn@mizuhada.example", "02-100-0010"),
-    ("E010", "Avery", "Warehouse Staff", "Warehouse", "Mihihi", "E009", "avery@mizuhada.example", "02-100-0011"),
-    ("E011", "Drew", "Sales Manager", "Sales", "Mihihi", "E006", "drew@mizuhada.example", "02-100-0020"),
+    ("E006", "Taylor", "Brand Lead", "Management", "Mihihi", "E002", "taylor@mizahaha.example", "02-100-0001"),
+    ("E007", "Sam", "Marketing Manager", "Marketing", "Mihihi", "E006", "sam@mizahaha.example", "02-100-0002"),
+    ("E008", "Riley", "Marketing Exec", "Marketing", "Mihihi", "E007", "riley@mizahaha.example", "02-100-0003"),
+    ("E009", "Quinn", "Warehouse Manager", "Warehouse", "Mihihi", "E006", "quinn@mizahaha.example", "02-100-0010"),
+    ("E010", "Avery", "Warehouse Staff", "Warehouse", "Mihihi", "E009", "avery@mizahaha.example", "02-100-0011"),
+    ("E011", "Drew", "Sales Manager", "Sales", "Mihihi", "E006", "drew@mizahaha.example", "02-100-0020"),
 
     # --- Bobi brand ---
-    ("E012", "Reese", "Brand Lead", "Management", "Bobi", "E002", "reese@mizuhada.example", "02-200-0001"),
-    ("E013", "Skyler", "Marketing Manager", "Marketing", "Bobi", "E012", "skyler@mizuhada.example", "02-200-0002"),
-    ("E014", "Parker", "Warehouse Manager", "Warehouse", "Bobi", "E012", "parker@mizuhada.example", "02-200-0010"),
-    ("E015", "Hayden", "Warehouse Staff", "Warehouse", "Bobi", "E014", "hayden@mizuhada.example", "02-200-0011"),
-    ("E016", "Rowan", "Sales Manager", "Sales", "Bobi", "E012", "rowan@mizuhada.example", "02-200-0020"),
-    ("E017", "Emerson", "Sales Exec", "Sales", "Bobi", "E016", "emerson@mizuhada.example", "02-200-0021"),
+    ("E012", "Reese", "Brand Lead", "Management", "Bobi", "E002", "reese@mizahaha.example", "02-200-0001"),
+    ("E013", "Skyler", "Marketing Manager", "Marketing", "Bobi", "E012", "skyler@mizahaha.example", "02-200-0002"),
+    ("E014", "Parker", "Warehouse Manager", "Warehouse", "Bobi", "E012", "parker@mizahaha.example", "02-200-0010"),
+    ("E015", "Hayden", "Warehouse Staff", "Warehouse", "Bobi", "E014", "hayden@mizahaha.example", "02-200-0011"),
+    ("E016", "Rowan", "Sales Manager", "Sales", "Bobi", "E012", "rowan@mizahaha.example", "02-200-0020"),
+    ("E017", "Emerson", "Sales Exec", "Sales", "Bobi", "E016", "emerson@mizahaha.example", "02-200-0021"),
 
     # --- Harshcolor brand ---
-    ("E018", "Finley", "Brand Lead", "Management", "Harshcolor", "E002", "finley@mizuhada.example", "02-300-0001"),
-    ("E019", "Sage", "Marketing Manager", "Marketing", "Harshcolor", "E018", "sage@mizuhada.example", "02-300-0002"),
-    ("E020", "Blake", "Warehouse Manager", "Warehouse", "Harshcolor", "E018", "blake@mizuhada.example", "02-300-0010"),
-    ("E021", "Lane", "Warehouse Staff", "Warehouse", "Harshcolor", "E020", "lane@mizuhada.example", "02-300-0011"),
-    ("E022", "Marlow", "Sales Manager", "Sales", "Harshcolor", "E018", "marlow@mizuhada.example", "02-300-0020"),
-    ("E023", "Indi", "Sales Exec", "Sales", "Harshcolor", "E022", "indi@mizuhada.example", "02-300-0021"),
+    ("E018", "Finley", "Brand Lead", "Management", "Harshcolor", "E002", "finley@mizahaha.example", "02-300-0001"),
+    ("E019", "Sage", "Marketing Manager", "Marketing", "Harshcolor", "E018", "sage@mizahaha.example", "02-300-0002"),
+    ("E020", "Blake", "Warehouse Manager", "Warehouse", "Harshcolor", "E018", "blake@mizahaha.example", "02-300-0010"),
+    ("E021", "Lane", "Warehouse Staff", "Warehouse", "Harshcolor", "E020", "lane@mizahaha.example", "02-300-0011"),
+    ("E022", "Marlow", "Sales Manager", "Sales", "Harshcolor", "E018", "marlow@mizahaha.example", "02-300-0020"),
+    ("E023", "Indi", "Sales Exec", "Sales", "Harshcolor", "E022", "indi@mizahaha.example", "02-300-0021"),
 ]
 
 # (sku, name, brand, category, current_stock, avg_daily_sales, reorder_point)
