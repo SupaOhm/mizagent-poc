@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Environment
+.env
+
+# SQLite (regenerated via seed_db.py)
+mock_company.db
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+*.swp
