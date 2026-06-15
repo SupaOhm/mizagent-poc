@@ -2,3 +2,6 @@ google-adk
 google-generativeai
 streamlit
 python-dotenv
+
+# --- dev tools / optional (not required to run the app) ---
+sqlite-web

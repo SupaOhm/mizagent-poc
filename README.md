@@ -45,6 +45,23 @@ python db_tools.py       # smoke-tests all 5 tools, prints JSON
 
 Employee IDs look like `E001`–`E023` (e.g. `E004` = Ohm, `E009` = Quinn, `E012` = Reese).
 
+## Browsing the mock database
+
+To inspect `mock_company.db` in a phpMyAdmin-style web UI (via `sqlite-web`):
+
+```bash
+sqlite_web mock_company.db      # from the repo root
+```
+
+Then open <http://localhost:8080> in a browser.
+
+On **WSL2**, the port usually forwards to the Windows browser automatically. If
+`localhost:8080` doesn't reach it, bind all interfaces as a fallback:
+
+```bash
+sqlite_web -H 0.0.0.0 mock_company.db
+```
+
 ## About this POC
 
 This is a **no-auth, mock-database POC** for the function-calling agent layer
