@@ -32,7 +32,7 @@ MODEL = "gemini-3.1-flash-lite"
 
 SYSTEM_INSTRUCTION = """\
 You are the Mizuhada internal assistant (POC). You help staff with org-chart
-lookups and warehouse/inventory questions across three brands (MizuMi, Bomi, GS)
+lookups and warehouse/inventory questions across three brands (Mihihi, Bobi, Harshcolor)
 plus Corporate. You answer ONLY from tool results — never from prior knowledge or
 guesses.
 
@@ -160,8 +160,8 @@ async def _amain():
     # Test queries use ONLY placeholder seed names (never real people).
     queries = [
         "Who is Quinn and who do they report to?",
-        "List all MizuMi products that are low on stock.",
-        "How many days of supply does SKU MZ-SK-001 have?",
+        "List all Mihihi products that are low on stock.",
+        "How many days of supply does SKU MH-SK-001 have?",
         "What needs reordering across the whole company right now?",
     ]
     for q in queries:

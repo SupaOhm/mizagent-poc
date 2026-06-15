@@ -43,16 +43,16 @@ with st.sidebar:
     st.markdown(
         "Employee IDs look like `E001`–`E023`. Examples you can use:\n"
         "- `E004` — Ohm (Dev Intern, IT/AI)\n"
-        "- `E009` — Quinn (Warehouse Manager, MizuMi)\n"
-        "- `E012` — Reese (Brand Lead, Bomi)"
+        "- `E009` — Quinn (Warehouse Manager, Mihihi)\n"
+        "- `E012` — Reese (Brand Lead, Bobi)"
     )
 
     st.divider()
     st.subheader("Example prompts")
     examples = [
         "Who is Quinn and who do they report to?",
-        "List all MizuMi products that are low on stock.",
-        "How many days of supply does SKU MZ-SK-001 have?",
+        "List all Mihihi products that are low on stock.",
+        "How many days of supply does SKU MH-SK-001 have?",
         "What needs reordering across the whole company?",
     ]
     for i, ex in enumerate(examples):

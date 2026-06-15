@@ -39,8 +39,8 @@ python db_tools.py       # smoke-tests all 5 tools, prints JSON
 
 ## Example questions
 - "Who is Quinn and who do they report to?"
-- "List all MizuMi products that are low on stock."
-- "How many days of supply does SKU MZ-SK-001 have?"
+- "List all Mihihi products that are low on stock."
+- "How many days of supply does SKU MH-SK-001 have?"
 - "What needs reordering across the whole company?"
 
 Employee IDs look like `E001`–`E023` (e.g. `E004` = Ohm, `E009` = Quinn, `E012` = Reese).

@@ -198,16 +198,16 @@ def _smoke_test():
     show("get_employee_record('E004')  # Ohm", get_employee_record("E004"))
     show("get_employee_record('E999') [not found]", get_employee_record("E999"))
 
-    show("query_products(brand='MizuMi')", query_products(brand="MizuMi"))
+    show("query_products(brand='Mihihi')", query_products(brand="Mihihi"))
     show("query_products(stock_status='low')", query_products(stock_status="low"))
     show("query_products(stock_status='bogus') [error]", query_products(stock_status="bogus"))
 
-    show("calculate_stock_coverage('MZ-SK-001')", calculate_stock_coverage("MZ-SK-001"))
-    show("calculate_stock_coverage('MZ-WE-001')  # avg=0 edge", calculate_stock_coverage("MZ-WE-001"))
+    show("calculate_stock_coverage('MH-SK-001')", calculate_stock_coverage("MH-SK-001"))
+    show("calculate_stock_coverage('MH-WE-001')  # avg=0 edge", calculate_stock_coverage("MH-WE-001"))
     show("calculate_stock_coverage('NOPE') [not found]", calculate_stock_coverage("NOPE"))
 
     show("get_low_stock_items()", get_low_stock_items())
-    show("get_low_stock_items(brand='Bomi')", get_low_stock_items(brand="Bomi"))
+    show("get_low_stock_items(brand='Bobi')", get_low_stock_items(brand="Bobi"))
 
 
 if __name__ == "__main__":

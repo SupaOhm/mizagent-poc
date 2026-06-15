@@ -22,51 +22,51 @@ EMPLOYEES = [
     ("E004", "Ohm", "Dev Intern", "IT/AI", "Corporate", "E003", "ohm@mizuhada.example", "02-000-0011"),
     ("E005", "Morgan", "Data Analyst", "IT/AI", "Corporate", "E003", "morgan@mizuhada.example", "02-000-0012"),
 
-    # --- MizuMi brand ---
-    ("E006", "Taylor", "Brand Lead", "Management", "MizuMi", "E002", "taylor@mizuhada.example", "02-100-0001"),
-    ("E007", "Sam", "Marketing Manager", "Marketing", "MizuMi", "E006", "sam@mizuhada.example", "02-100-0002"),
-    ("E008", "Riley", "Marketing Exec", "Marketing", "MizuMi", "E007", "riley@mizuhada.example", "02-100-0003"),
-    ("E009", "Quinn", "Warehouse Manager", "Warehouse", "MizuMi", "E006", "quinn@mizuhada.example", "02-100-0010"),
-    ("E010", "Avery", "Warehouse Staff", "Warehouse", "MizuMi", "E009", "avery@mizuhada.example", "02-100-0011"),
-    ("E011", "Drew", "Sales Manager", "Sales", "MizuMi", "E006", "drew@mizuhada.example", "02-100-0020"),
+    # --- Mihihi brand ---
+    ("E006", "Taylor", "Brand Lead", "Management", "Mihihi", "E002", "taylor@mizuhada.example", "02-100-0001"),
+    ("E007", "Sam", "Marketing Manager", "Marketing", "Mihihi", "E006", "sam@mizuhada.example", "02-100-0002"),
+    ("E008", "Riley", "Marketing Exec", "Marketing", "Mihihi", "E007", "riley@mizuhada.example", "02-100-0003"),
+    ("E009", "Quinn", "Warehouse Manager", "Warehouse", "Mihihi", "E006", "quinn@mizuhada.example", "02-100-0010"),
+    ("E010", "Avery", "Warehouse Staff", "Warehouse", "Mihihi", "E009", "avery@mizuhada.example", "02-100-0011"),
+    ("E011", "Drew", "Sales Manager", "Sales", "Mihihi", "E006", "drew@mizuhada.example", "02-100-0020"),
 
-    # --- Bomi brand ---
-    ("E012", "Reese", "Brand Lead", "Management", "Bomi", "E002", "reese@mizuhada.example", "02-200-0001"),
-    ("E013", "Skyler", "Marketing Manager", "Marketing", "Bomi", "E012", "skyler@mizuhada.example", "02-200-0002"),
-    ("E014", "Parker", "Warehouse Manager", "Warehouse", "Bomi", "E012", "parker@mizuhada.example", "02-200-0010"),
-    ("E015", "Hayden", "Warehouse Staff", "Warehouse", "Bomi", "E014", "hayden@mizuhada.example", "02-200-0011"),
-    ("E016", "Rowan", "Sales Manager", "Sales", "Bomi", "E012", "rowan@mizuhada.example", "02-200-0020"),
-    ("E017", "Emerson", "Sales Exec", "Sales", "Bomi", "E016", "emerson@mizuhada.example", "02-200-0021"),
+    # --- Bobi brand ---
+    ("E012", "Reese", "Brand Lead", "Management", "Bobi", "E002", "reese@mizuhada.example", "02-200-0001"),
+    ("E013", "Skyler", "Marketing Manager", "Marketing", "Bobi", "E012", "skyler@mizuhada.example", "02-200-0002"),
+    ("E014", "Parker", "Warehouse Manager", "Warehouse", "Bobi", "E012", "parker@mizuhada.example", "02-200-0010"),
+    ("E015", "Hayden", "Warehouse Staff", "Warehouse", "Bobi", "E014", "hayden@mizuhada.example", "02-200-0011"),
+    ("E016", "Rowan", "Sales Manager", "Sales", "Bobi", "E012", "rowan@mizuhada.example", "02-200-0020"),
+    ("E017", "Emerson", "Sales Exec", "Sales", "Bobi", "E016", "emerson@mizuhada.example", "02-200-0021"),
 
-    # --- GS brand ---
-    ("E018", "Finley", "Brand Lead", "Management", "GS", "E002", "finley@mizuhada.example", "02-300-0001"),
-    ("E019", "Sage", "Marketing Manager", "Marketing", "GS", "E018", "sage@mizuhada.example", "02-300-0002"),
-    ("E020", "Blake", "Warehouse Manager", "Warehouse", "GS", "E018", "blake@mizuhada.example", "02-300-0010"),
-    ("E021", "Lane", "Warehouse Staff", "Warehouse", "GS", "E020", "lane@mizuhada.example", "02-300-0011"),
-    ("E022", "Marlow", "Sales Manager", "Sales", "GS", "E018", "marlow@mizuhada.example", "02-300-0020"),
-    ("E023", "Indi", "Sales Exec", "Sales", "GS", "E022", "indi@mizuhada.example", "02-300-0021"),
+    # --- Harshcolor brand ---
+    ("E018", "Finley", "Brand Lead", "Management", "Harshcolor", "E002", "finley@mizuhada.example", "02-300-0001"),
+    ("E019", "Sage", "Marketing Manager", "Marketing", "Harshcolor", "E018", "sage@mizuhada.example", "02-300-0002"),
+    ("E020", "Blake", "Warehouse Manager", "Warehouse", "Harshcolor", "E018", "blake@mizuhada.example", "02-300-0010"),
+    ("E021", "Lane", "Warehouse Staff", "Warehouse", "Harshcolor", "E020", "lane@mizuhada.example", "02-300-0011"),
+    ("E022", "Marlow", "Sales Manager", "Sales", "Harshcolor", "E018", "marlow@mizuhada.example", "02-300-0020"),
+    ("E023", "Indi", "Sales Exec", "Sales", "Harshcolor", "E022", "indi@mizuhada.example", "02-300-0021"),
 ]
 
 # (sku, name, brand, category, current_stock, avg_daily_sales, reorder_point)
 PRODUCTS = [
-    # MizuMi
-    ("MZ-SK-001", "MizuMi Hydra Serum", "MizuMi", "Skincare", 120, 8.0, 60),
-    ("MZ-SK-002", "MizuMi Gentle Cleanser", "MizuMi", "Skincare", 30, 5.0, 50),   # low
-    ("MZ-CO-001", "MizuMi Velvet Lipstick", "MizuMi", "Cosmetics", 200, 12.0, 80),
-    ("MZ-CO-002", "MizuMi Glow Cushion", "MizuMi", "Cosmetics", 15, 9.0, 40),     # low
-    ("MZ-WE-001", "MizuMi Collagen Drink", "MizuMi", "Wellness", 90, 0.0, 30),    # avg_daily_sales = 0 edge case
-    # Bomi
-    ("BM-SK-001", "Bomi Aqua Moisturizer", "Bomi", "Skincare", 75, 6.0, 50),
-    ("BM-SK-002", "Bomi Clay Mask", "Bomi", "Skincare", 22, 4.0, 35),            # low
-    ("BM-CO-001", "Bomi Matte Foundation", "Bomi", "Cosmetics", 140, 10.0, 70),
-    ("BM-CO-002", "Bomi Brow Pencil", "Bomi", "Cosmetics", 18, 7.0, 45),         # low
-    ("BM-WE-001", "Bomi Vitamin Gummies", "Bomi", "Wellness", 60, 3.0, 40),
-    # GS
-    ("GS-SK-001", "GS Repair Night Cream", "GS", "Skincare", 110, 7.0, 60),
-    ("GS-CO-001", "GS Liquid Eyeliner", "GS", "Cosmetics", 25, 6.0, 50),         # low
-    ("GS-CO-002", "GS Setting Powder", "GS", "Cosmetics", 95, 5.0, 40),
-    ("GS-WE-001", "GS Protein Shake", "GS", "Wellness", 40, 8.0, 80),            # low
-    ("GS-WE-002", "GS Sleep Tea", "GS", "Wellness", 130, 2.0, 30),
+    # Mihihi
+    ("MH-SK-001", "Hydrating Serum", "Mihihi", "Skincare", 120, 8.0, 60),
+    ("MH-SK-002", "Gentle Facial Cleanser", "Mihihi", "Skincare", 30, 5.0, 50),   # low
+    ("MH-CO-001", "Lip Tint", "Mihihi", "Cosmetics", 200, 12.0, 80),
+    ("MH-CO-002", "Cushion Foundation", "Mihihi", "Cosmetics", 15, 9.0, 40),     # low
+    ("MH-WE-001", "Collagen Powder", "Mihihi", "Wellness", 90, 0.0, 30),    # avg_daily_sales = 0 edge case
+    # Bobi
+    ("BB-SK-001", "Hydrating Toner", "Bobi", "Skincare", 75, 6.0, 50),
+    ("BB-SK-002", "Calming Sheet Mask", "Bobi", "Skincare", 22, 4.0, 35),            # low
+    ("BB-CO-001", "Eyeshadow Palette", "Bobi", "Cosmetics", 140, 10.0, 70),
+    ("BB-CO-002", "Eyebrow Pencil", "Bobi", "Cosmetics", 18, 7.0, 45),         # low
+    ("BB-WE-001", "Vitamin C Effervescent", "Bobi", "Wellness", 60, 3.0, 40),
+    # Harshcolor
+    ("HC-SK-001", "Facial Sunscreen SPF50", "Harshcolor", "Skincare", 110, 7.0, 60),
+    ("HC-CO-001", "Liquid Eyeliner", "Harshcolor", "Cosmetics", 25, 6.0, 50),         # low
+    ("HC-CO-002", "Setting Powder", "Harshcolor", "Cosmetics", 95, 5.0, 40),
+    ("HC-WE-001", "Electrolyte Mix", "Harshcolor", "Wellness", 40, 8.0, 80),            # low
+    ("HC-WE-002", "Sleep Support Capsules", "Harshcolor", "Wellness", 130, 2.0, 30),
 ]
 
 SCHEMA = """
