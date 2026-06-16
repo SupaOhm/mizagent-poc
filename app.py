@@ -53,14 +53,29 @@ with st.sidebar:
 
     st.divider()
     st.subheader("Example prompts")
-    examples = [
-        "Who is Quinn and who do they report to?",
-        "List all Mihihi products that are low on stock.",
-        "How many days of supply does SKU MH-SK-001 have?",
-        "What needs reordering across the whole company?",
+
+    st.caption("Single tool")
+    single_tool = [
+        "Who is in the Warehouse team for Mihihi?",
+        "What are the contact details for employee E005?",
+        "Show me all Harshcolor products.",
+        "How many days of stock do we have left for SKU BB-WL-005?",
+        "Which Bobi products need restocking?",
     ]
-    for i, ex in enumerate(examples):
-        if st.button(ex, key=f"ex_{i}", use_container_width=True):
+    for i, ex in enumerate(single_tool):
+        if st.button(ex, key=f"ex_s_{i}", use_container_width=True):
+            st.session_state.pending = ex
+
+    st.caption("Multi-tool chains")
+    multi_tool = [
+        "Who is Quinn and who do they report to?",
+        "What is Morgan's role and what is their email address?",
+        "Find Reese's manager and give me their phone number.",
+        "Which Mihihi products are low on stock, and how many days of supply does the worst one have?",
+        "List all Harshcolor items below reorder point — and how long will Lip Tint (HC-CO-002) last at current sales?",
+    ]
+    for i, ex in enumerate(multi_tool):
+        if st.button(ex, key=f"ex_m_{i}", use_container_width=True):
             st.session_state.pending = ex
 
     st.divider()
