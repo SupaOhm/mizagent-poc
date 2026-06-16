@@ -36,6 +36,10 @@ streamlit run app.py
 > explicitly (each turn's tool name, arguments, raw return value, and the routing
 > rule it maps to). The main chat page stays clean.
 
+## Debug mode
+
+Set `DEBUG=true` in `.env` to print full tool-call traces to the terminal on every agent turn. Useful for CLI dev and verifying tool routing without opening the Streamlit debug page.
+
 ## Quick checks (no API key needed)
 ```bash
 python seed_db.py        # prints row counts
