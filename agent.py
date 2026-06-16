@@ -13,11 +13,14 @@ The agent NEVER does arithmetic itself: every number comes from a tool result.
 """
 
 import asyncio
+import json
 import os
 
 from dotenv import load_dotenv
 
-load_dotenv()  # read GOOGLE_API_KEY from .env into the environment
+load_dotenv()  # read GOOGLE_API_KEY and DEBUG from .env
+
+DEBUG = os.getenv("DEBUG", "false").lower() in ("true", "1", "yes")
 
 from db_tools import (
     calculate_stock_coverage,
@@ -149,6 +152,24 @@ def _match_call(pending_calls, name):
     return {"tool_name": name, "arguments": {}}
 
 
+def _print_trace(session_id, user_message, trace, reply):
+    SEP = "─" * 45
+    print(SEP)
+    print(f"[AGENT TURN] session={session_id}")
+    print(f"USER: {user_message}")
+    if trace:
+        for i, entry in enumerate(trace, 1):
+            print(f"\n[TOOL CALL {i}]")
+            print(f"  Tool:         {entry['tool_name']}")
+            print(f"  Routing rule: {entry.get('routing_rule', '(unmapped)')}")
+            print(f"  Arguments:    {json.dumps(entry.get('arguments', {}), ensure_ascii=False)}")
+            print(f"  Result:       {json.dumps(entry.get('result', {}), ensure_ascii=False, indent=2)}")
+    else:
+        print("\n[NO TOOL CALLS]")
+    print(f"\nRESPONSE: {reply}")
+    print(SEP)
+
+
 def get_agent_response(user_message, session_id):
     """Run the agent for one turn.
 
@@ -167,32 +188,22 @@ def get_agent_response(user_message, session_id):
     except Exception as exc:  # POC: surface errors instead of crashing the UI
         return f"Agent error: {exc}", []
     _LAST_TRACE[session_id] = trace
+    if DEBUG:
+        _print_trace(session_id, user_message, trace, reply)
     return reply, trace
-
-
-async def _run_query(runner, user_id, session_id, text):
-    from google.genai import types
-
-    print(f"\n>>> USER: {text}")
-    message = types.Content(role="user", parts=[types.Part(text=text)])
-    async for event in runner.run_async(
-        user_id=user_id, session_id=session_id, new_message=message
-    ):
-        if event.is_final_response() and event.content and event.content.parts:
-            reply = "".join(p.text or "" for p in event.content.parts)
-            print(f"<<< AGENT: {reply.strip()}")
 
 
 async def _amain():
     from google.adk.runners import InMemoryRunner
 
+    global _RUNNER, _KNOWN_SESSIONS
     agent = build_agent()
-    runner = InMemoryRunner(agent=agent, app_name=APP_NAME)
+    _RUNNER = InMemoryRunner(agent=agent, app_name=APP_NAME)
 
-    user_id = "demo_user"
-    session = await runner.session_service.create_session(
-        app_name=APP_NAME, user_id=user_id
+    session = await _RUNNER.session_service.create_session(
+        app_name=APP_NAME, user_id=_DEFAULT_USER
     )
+    _KNOWN_SESSIONS.add(session.id)
 
     # Test queries use ONLY placeholder seed names (never real people).
     queries = [
@@ -202,7 +213,12 @@ async def _amain():
         "What needs reordering across the whole company right now?",
     ]
     for q in queries:
-        await _run_query(runner, user_id, session.id, q)
+        reply, trace = await _respond(session.id, q)
+        if DEBUG:
+            _print_trace(session.id, q, trace, reply)
+        else:
+            print(f"\n>>> USER: {q}")
+            print(f"<<< AGENT: {reply}")
 
 
 def main():
