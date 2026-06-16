@@ -17,3 +17,5 @@ mock_company.db
 *.swp
 
 .claude
+.agents/
+skills-lock.json
