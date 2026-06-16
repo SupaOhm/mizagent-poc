@@ -11,20 +11,61 @@ import streamlit as st
 
 import agent
 
-st.set_page_config(page_title="Internal Agent - POC", page_icon="🤖")
+st.set_page_config(page_title="Mizuhada Internal Agent", page_icon=None)
 
-st.title("Internal Agent - POC")
-st.caption(
-    "⚠️ Demo only — runs on a mock SQLite database with fictional data. "
-    "No authentication, no real records."
-)
+st.markdown("""
+<style>
+/* Sidebar section eyebrows */
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.65rem;
+    color: #999;
+    margin-top: 0.75rem;
+    margin-bottom: 0.15rem;
+}
+
+/* Example prompt buttons */
+[data-testid="stSidebar"] .stButton > button {
+    background: transparent;
+    border: 1px solid #e2e2e2;
+    text-align: left;
+    justify-content: flex-start;
+    font-size: 0.82rem;
+    color: #2c2c2c;
+    padding: 0.35rem 0.65rem;
+    border-radius: 3px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: #f7f7f7;
+    border-color: #bbb;
+    color: #111;
+}
+
+/* Tool list in sidebar */
+[data-testid="stSidebar"] li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* Monospace for IDs */
+code {
+    font-size: 0.8em;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.title("Mizuhada Internal Agent")
+st.caption("POC — mock SQLite database, fictional data, no authentication.")
 
 # --- Session state ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "turns" not in st.session_state:
     # One entry per user turn: {"question": str, "trace": list}. Read by the
-    # 🔍 Debug Trace page; never rendered on this chat page.
+    # Debug Trace page; never rendered on this chat page.
     st.session_state.turns = []
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
@@ -33,22 +74,26 @@ if "pending" not in st.session_state:
 
 # --- Sidebar ---
 with st.sidebar:
+    st.markdown(
+        '<div style="height:2px;background:#B8A99A;margin-bottom:1.1rem;border-radius:1px;"></div>',
+        unsafe_allow_html=True,
+    )
     st.header("What this agent can do")
     st.markdown(
-        "- **search_employees** — find staff by name and/or team\n"
-        "- **get_employee_record** — full record + manager for an employee_id\n"
-        "- **query_products** — filter products by brand / category / stock status\n"
-        "- **calculate_stock_coverage** — days of supply for a SKU\n"
+        "- **search_employees** — find staff by name or team\n"
+        "- **get_employee_record** — full record and manager chain for an ID\n"
+        "- **query_products** — filter products by brand, category, or stock status\n"
+        "- **calculate_stock_coverage** — days of supply remaining for a SKU\n"
         "- **get_low_stock_items** — products below their reorder point"
     )
 
     st.divider()
-    st.subheader("Try personal-data queries")
+    st.subheader("Employee lookup")
     st.markdown(
-        "Employee IDs look like `E001`–`E023`. Examples you can use:\n"
-        "- `E004` — Ohm (Dev Intern, IT/AI)\n"
-        "- `E009` — Quinn (Warehouse Manager, Mihihi)\n"
-        "- `E012` — Reese (Brand Lead, Bobi)"
+        "IDs run `E001`–`E023`. Quick references:\n"
+        "- `E004` — Ohm, Dev Intern, IT/AI\n"
+        "- `E009` — Quinn, Warehouse Manager, Mihihi\n"
+        "- `E012` — Reese, Brand Lead, Bobi"
     )
 
     st.divider()
@@ -79,7 +124,7 @@ with st.sidebar:
             st.session_state.pending = ex
 
     st.divider()
-    if st.button("🔄 New conversation", use_container_width=True):
+    if st.button("Clear chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.turns = []
         st.session_state.session_id = str(uuid.uuid4())
