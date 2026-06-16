@@ -8,13 +8,10 @@ tool name, routing rule, arguments, and the raw return dict from db_tools.py
 
 import streamlit as st
 
-st.set_page_config(page_title="Debug Trace - POC", page_icon="🔍")
+st.set_page_config(page_title="Tool Call Trace", page_icon=None)
 
-st.title("🔍 Agent Tool-Call Trace")
-st.caption(
-    "For development and POC demo purposes — shows what the agent actually "
-    "called behind the scenes."
-)
+st.title("Tool call trace")
+st.caption("What the agent called behind each answer.")
 
 turns = st.session_state.get("turns", [])
 
@@ -27,13 +24,13 @@ else:
 
         trace = turn.get("trace") or []
         if not trace:
-            st.info("No tool calls — agent responded directly")
+            st.info("No tool calls — agent responded directly.")
         else:
             for call in trace:
-                label = f"🛠️ {call['tool_name']} — {call.get('routing_rule', '(unmapped)')}"
+                label = f"{call['tool_name']} — {call.get('routing_rule', '(unmapped)')}"
                 with st.expander(label):
                     st.markdown("**Arguments**")
                     st.json(call.get("arguments", {}))
-                    st.markdown("**Return value (raw tool result)**")
+                    st.markdown("**Raw result**")
                     st.json(call.get("result", {}))
         st.divider()
