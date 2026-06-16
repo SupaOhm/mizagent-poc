@@ -15,3 +15,5 @@ mock_company.db
 .DS_Store
 .vscode/
 *.swp
+
+.claude
