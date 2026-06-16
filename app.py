@@ -28,20 +28,20 @@ st.markdown("""
 /* Example prompt buttons */
 [data-testid="stSidebar"] .stButton > button {
     background: transparent;
-    border: 1px solid #e2e2e2;
+    border: 1px solid rgba(128,128,128,0.3);
     text-align: left;
     justify-content: flex-start;
     font-size: 0.82rem;
-    color: #2c2c2c;
+    color: inherit;
     padding: 0.35rem 0.65rem;
     border-radius: 3px;
     font-weight: 400;
     line-height: 1.4;
 }
 [data-testid="stSidebar"] .stButton > button:hover {
-    background: #f7f7f7;
-    border-color: #bbb;
-    color: #111;
+    background: rgba(128,128,128,0.08);
+    border-color: rgba(128,128,128,0.5);
+    color: inherit;
 }
 
 /* Tool list in sidebar */
